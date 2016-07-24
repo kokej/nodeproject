@@ -12,13 +12,18 @@
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="/members">Members</a></li>
+				{{#unless user}}
 				<li><a href="/users/register">Register</a></li>
 				<li><a href="/users/login">Log in</a></li>
+				{{/unless}}
 			</ul>
+			{{#if user}}
 			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">Bienvenido, {{user.username}}</a></li>
 				<li><a href="/users/logout">Logout</a></li>
 			</ul>
+			{{/if}}
+
 		</div>
 	</div>
 </div>
-	
