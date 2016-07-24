@@ -27,6 +27,7 @@
     "multer":"*",
     "consolidate":"*",
     "express-handlebars":"*",
-    "multiparty": "*"
+    "multiparty": "*",
+    "bcrypt": "*"
   }
 }

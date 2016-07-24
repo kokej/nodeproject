@@ -1,10 +1,13 @@
 var multiparty = require('multiparty');
 var express = require('express');
 var router = express.Router();
+var User = require('../models/user');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+    res.render('index', {
+    'title': 'Users'
+  });
 });
 
 router.get('/register', function(req, res, next) {
@@ -31,10 +34,10 @@ router.post('/register', function(req, res, next) {
     var password = body.password;
     var password2 = body.password2;
     //check if there is file
-    if(files.profileimage){
+    if(files.profileimage[0].originalFilename !== ''){
       // file info
       var profileImage = {
-        name: files.profileimage[0].originalFilename,
+        name: files.profileimage[0].originalFilename, 
         path: files.profileimage[0].path,
         ext: files.profileimage[0].originalFilename.slice(files.profileimage[0].originalFilename.indexOf('.') + 1),
         size: files.profileimage[0].size
@@ -44,7 +47,6 @@ router.post('/register', function(req, res, next) {
       var profileImage = {
         name: 'noimage.png'
       }
-      console.log(profileImage.name);
     }
 
     // form validation
@@ -68,7 +70,6 @@ router.post('/register', function(req, res, next) {
         password2: password2
       });
     } else {
-      console.log('no errors, create user....');
       var newUser = new User({
         name: name,
         email: email,
