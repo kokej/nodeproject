@@ -19,7 +19,17 @@
 			</ul>
 			{{#if user}}
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Bienvenido, {{user.username}}</a></li>
+				<li><a href="#">Welcome, {{user.username}}</a></li>
+
+				<li role="presentation" class="dropdown">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+				      	Update user <span class="caret"></span>
+				    </a>
+				    <ul class="dropdown-menu">
+				      	<li><a href="/users/profile">Update profile</a></li>
+				     	<li><a href="/users/admin">Update user settings</a></li>
+				    </ul>
+				  </li>
 				<li><a href="/users/logout">Logout</a></li>
 			</ul>
 			{{/if}}

@@ -51,3 +51,11 @@ module.exports.createUser = function(newUser, callback){
 		newUser.save(callback);
 	});
 }
+
+module.exports.modifyUser = function(newUser, callback){
+	var query = {username: newUser.name};
+	User.findOneAndUpdate(query, newUser, {upsert:true}, function(err, doc){
+	    if (err) throw err;
+	    console.log("succesfully saved");
+	});
+}
